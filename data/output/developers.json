@@ -1,0 +1,124 @@
+{
+  "developers": [
+    {
+      "developer": {
+        "name": "Playground Games",
+        "games": [
+          {
+            "name": "Forza Horizon 5",
+            "publisher": "Xbox Game Studios",
+            "releaseDate": "9 Nov, 2021",
+            "tags": [
+              "Racing",
+              "Adventure",
+              "Open World",
+              "Simulation"
+            ]
+          },
+          {
+            "name": "Forza Horizon 4",
+            "publisher": "Xbox Game Studios",
+            "releaseDate": "2 Oct, 2018",
+            "tags": [
+              "Racing",
+              "Open World",
+              "Driving",
+              "Multiplayer",
+              "PvP"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "developer": {
+        "name": "Valve",
+        "games": [
+          {
+            "name": "Counter-Strike: Global Offensive",
+            "publisher": "Valve",
+            "releaseDate": "21 Aug, 2012",
+            "tags": [
+              "FPS",
+              "Shooter",
+              "Multiplayer",
+              "Competitive",
+              "Action"
+            ]
+          },
+          {
+            "name": "Dota 2",
+            "publisher": "Valve",
+            "releaseDate": "9 Jul, 2013",
+            "tags": [
+              "Free to Play",
+              "MOBA",
+              "Multiplayer",
+              "Strategy",
+              "PvP"
+            ]
+          },
+          {
+            "name": "Portal 2",
+            "publisher": "Valve",
+            "releaseDate": "19 Apr, 2011",
+            "tags": [
+              "Platformer",
+              "Puzzle",
+              "Dark Humor",
+              "Puzzle Platformer"
+            ]
+          },
+          {
+            "name": "Half-Life 2",
+            "publisher": "Valve",
+            "releaseDate": "16 Nov, 2004",
+            "tags": [
+              "FPS",
+              "Action",
+              "Sci-fi",
+              "Classic",
+              "Singleplayer"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "developer": {
+        "name": "Respawn Entertainment",
+        "games": [
+          {
+            "name": "Apex Legends",
+            "publisher": "Electronic Arts",
+            "releaseDate": "5 Nov, 2020",
+            "tags": [
+              "Free to Play",
+              "Battle Royale",
+              "Multiplayer",
+              "Shooter"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "developer": {
+        "name": "CD PROJEKT RED",
+        "games": [
+          {
+            "name": "The Witcher 3: Wild Hunt",
+            "publisher": "CD PROJEKT RED",
+            "releaseDate": "18 May, 2015",
+            "tags": [
+              "Open World",
+              "RPG",
+              "Story Rich",
+              "Atmospheric"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

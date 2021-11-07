@@ -4,17 +4,21 @@ import fileReader.DevelopersReader;
 import fileWriter.GamesWriter;
 import gameLibrary.Developer;
 import gameLibrary.Game;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import org.json.simple.parser.ParseException;
 import org.xml.sax.SAXException;
 import tools.FileExtension;
 
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class JsonToXml implements FileConverter {
     @Override
-    public void convert(String jsonFileName, String xmlFileName) throws IOException, ParserConfigurationException, SAXException {
-        if (!FileExtension.getExtension(jsonFileName).equals("xml")) {
+    public void convert(String jsonFileName, String xmlFileName) throws IOException, ParseException, XMLStreamException {
+        if (!FileExtension.getExtension(xmlFileName).equals("xml")) {
             throw new IllegalArgumentException("Неверное расширение файла");
         }
         DevelopersReader reader = new DevelopersReader();
@@ -25,7 +29,14 @@ public class JsonToXml implements FileConverter {
         writer.write(games, "data/output/" + xmlFileName);
     }
 
-    private ArrayList<Game> convertDevelopersToGames(ArrayList<Developer> developers) {
-        return null;
+    private @NotNull ArrayList<Game> convertDevelopersToGames(@NotNull ArrayList<Developer> developers) {
+        ArrayList<Game> games = new ArrayList<>();
+
+        for (Developer developer : developers) {
+            ArrayList<Game> developerGames = developer.getGames();
+            games.addAll(developerGames);
+        }
+
+        return games;
     }
 }

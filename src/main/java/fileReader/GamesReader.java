@@ -44,8 +44,8 @@ public class GamesReader implements Reader {
     private @NotNull Game getGame(@NotNull Node gameNode) {
         Game game = new Game();
         NodeList gameProperties = gameNode.getChildNodes();
-        for (int j = 0; j < gameProperties.getLength(); j++) {
-            Node gameProperty = gameProperties.item(j);
+        for (int i = 0; i < gameProperties.getLength(); i++) {
+            Node gameProperty = gameProperties.item(i);
             // Если нода не текст, то это один из параметров игры
             if (gameProperty.getNodeType() != Node.TEXT_NODE) {
                 switchProperty(gameProperty, game);
@@ -68,8 +68,8 @@ public class GamesReader implements Reader {
     private void setTagsToGame(@NotNull Node gameProperty, Game game) {
         ArrayList<String> tags = new ArrayList<>();
         NodeList tagsNode = gameProperty.getChildNodes();
-        for (int z = 0; z < tagsNode.getLength(); z++) {
-            Node tagNode = tagsNode.item(z);
+        for (int i = 0; i < tagsNode.getLength(); i++) {
+            Node tagNode = tagsNode.item(i);
             if (tagNode.getNodeType() != Node.TEXT_NODE) {
                 tags.add(tagNode.getTextContent());
             }

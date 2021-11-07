@@ -20,7 +20,6 @@ public class DevelopersWriter implements Writer {
 
         JsonObject developersObject = getDevelopersObject(developers);
 
-
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(developersObject);
 

@@ -11,6 +11,10 @@ public class Game {
     private String releaseDate = null;
     private ArrayList<String> tags;
 
+    public Game(){
+        tags = new ArrayList<>();
+    }
+
     public String getName() {
         if (name.isEmpty()) {
             throw new NullPointerException("Название не было установлено");
@@ -69,14 +73,14 @@ public class Game {
 
     public ArrayList<String> getTags() {
         if (tags.isEmpty()) {
-            throw new NullPointerException("Теги не были установлены");
+            throw new NullPointerException("Список тегов не был установлен");
         }
         return tags;
     }
 
     public void setTags(@NotNull ArrayList<String> tags) {
         if (tags.isEmpty()) {
-            throw new NullPointerException("Устанавливаемые теги пустые");
+            throw new NullPointerException("Устанавливаемый список тегов пустой");
         }
         this.tags = tags;
     }

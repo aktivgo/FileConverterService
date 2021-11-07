@@ -1,6 +1,8 @@
 package fileReader;
 
 
+import gameLibrary.Game;
+import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -10,56 +12,68 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.util.ArrayList;
 
-public class GamesReader implements FileReader{
+public class GamesReader implements Reader {
 
-    public GamesReader(){};
+    public GamesReader() {
+    }
 
-    @Override
-    public void read(String fileName) {
-        try {
-            // Создается построитель документа
-            DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-            // Создается дерево DOM документа из файла
-            Document document = documentBuilder.parse(fileName);
+    public Object read(String fileName) throws IOException, SAXException, ParserConfigurationException {
+        DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+        Document document = documentBuilder.parse(fileName);
+        return getGames(document);
+    }
 
-            // Получаем корневой элемент
-            Node root = document.getDocumentElement();
+    private @NotNull ArrayList<Game> getGames(@NotNull Document document) {
+        ArrayList<Game> games = new ArrayList<>();
 
-            System.out.println("List of games:");
-            System.out.println();
-            // Просматриваем все подэлементы корневого - т.е. игры
-            NodeList games = root.getChildNodes();
-            for (int i = 0; i < games.getLength(); i++) {
-                Node game = games.item(i);
-                // Если нода не текст, то это игра - заходим внутрь
-                if (game.getNodeType() != Node.TEXT_NODE) {
-                    NodeList gameProperties = game.getChildNodes();
-                    for(int j = 0; j < gameProperties.getLength(); j++) {
-                        Node gameProperty = gameProperties.item(j);
-                        // Если нода не текст, то это один из параметров игры - печатаем
-                        if (gameProperty.getNodeType() != Node.TEXT_NODE) {
-                            if (gameProperty.getNodeName().equals("tags")) {
-                                System.out.print(gameProperty.getNodeName() + ": ");
-                                NodeList tags = gameProperty.getChildNodes();
-                                for (int z = 0; z < tags.getLength(); z++) {
-                                    Node tag = tags.item(z);
-                                    if (tag.getNodeType() != Node.TEXT_NODE) {
-                                        System.out.print(tag.getTextContent() + ", ");
-                                    }
-                                }
-                                System.out.println();
-                            } else {
-                                System.out.println(gameProperty.getNodeName() + ": " + gameProperty.getTextContent());
-                            }
-                        }
-                    }
-                    System.out.println("===========>>>>");
-                }
+        Node root = document.getDocumentElement();
+        NodeList gameNodes = root.getChildNodes();
+        for (int i = 0; i < gameNodes.getLength(); i++) {
+            Node gameNode = gameNodes.item(i);
+            // Если нода не текст, то это игра
+            if (gameNode.getNodeType() != Node.TEXT_NODE) {
+                Game game = getGame(gameNode);
+                games.add(game);
             }
-
-        } catch (ParserConfigurationException | SAXException | IOException ex) {
-            ex.printStackTrace(System.out);
         }
+        return games;
+    }
+
+    private @NotNull Game getGame(@NotNull Node gameNode) {
+        Game game = new Game();
+        NodeList gameProperties = gameNode.getChildNodes();
+        for (int j = 0; j < gameProperties.getLength(); j++) {
+            Node gameProperty = gameProperties.item(j);
+            // Если нода не текст, то это один из параметров игры
+            if (gameProperty.getNodeType() != Node.TEXT_NODE) {
+                switchProperty(gameProperty, game);
+            }
+        }
+        return game;
+    }
+
+    private void switchProperty(@NotNull Node gameProperty, Game game) {
+        switch (gameProperty.getNodeName()) {
+            case "name" -> game.setName(gameProperty.getTextContent());
+            case "developer" -> game.setDeveloper(gameProperty.getTextContent());
+            case "publisher" -> game.setPublisher(gameProperty.getTextContent());
+            case "releaseDate" -> game.setReleaseDate(gameProperty.getTextContent());
+            case "tags" -> setTagsToGame(gameProperty, game);
+            default -> throw new IllegalArgumentException("Неопознанное имя тега");
+        }
+    }
+
+    private void setTagsToGame(@NotNull Node gameProperty, Game game) {
+        ArrayList<String> tags = new ArrayList<>();
+        NodeList tagsNode = gameProperty.getChildNodes();
+        for (int z = 0; z < tagsNode.getLength(); z++) {
+            Node tagNode = tagsNode.item(z);
+            if (tagNode.getNodeType() != Node.TEXT_NODE) {
+                tags.add(tagNode.getTextContent());
+            }
+        }
+        game.setTags(tags);
     }
 }

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<library>
+    <game id="0">
+        <name>Forza Horizon 5</name>
+        <developer>Playground Games</developer>
+        <publisher>Xbox Game Studios</publisher>
+        <releaseDate>9 Nov, 2021</releaseDate>
+        <tags>
+            <tag>Racing</tag>
+            <tag>Adventure</tag>
+            <tag>Open World</tag>
+            <tag>Simulation</tag>
+        </tags>
+    </game>
+    <game id="1">
+        <name>Forza Horizon 4</name>
+        <developer>Playground Games</developer>
+        <publisher>Xbox Game Studios</publisher>
+        <releaseDate>2 Oct, 2018</releaseDate>
+        <tags>
+            <tag>Racing</tag>
+            <tag>Open World</tag>
+            <tag>Driving</tag>
+            <tag>Multiplayer</tag>
+            <tag>PvP</tag>
+        </tags>
+    </game>
+    <game id="2">
+        <name>Counter-Strike: Global Offensive</name>
+        <developer>Valve</developer>
+        <publisher>Valve</publisher>
+        <releaseDate>21 Aug, 2012</releaseDate>
+        <tags>
+            <tag>FPS</tag>
+            <tag>Shooter</tag>
+            <tag>Multiplayer</tag>
+            <tag>Competitive</tag>
+            <tag>Action</tag>
+        </tags>
+    </game>
+    <game id="3">
+        <name>Dota 2</name>
+        <developer>Valve</developer>
+        <publisher>Valve</publisher>
+        <releaseDate>9 Jul, 2013</releaseDate>
+        <tags>
+            <tag>Free to Play</tag>
+            <tag>MOBA</tag>
+            <tag>Multiplayer</tag>
+            <tag>Strategy</tag>
+            <tag>PvP</tag>
+        </tags>
+    </game>
+    <game id="4">
+        <name>Portal 2</name>
+        <developer>Valve</developer>
+        <publisher>Valve</publisher>
+        <releaseDate>19 Apr, 2011</releaseDate>
+        <tags>
+            <tag>Platformer</tag>
+            <tag>Puzzle</tag>
+            <tag>Dark Humor</tag>
+            <tag>Puzzle Platformer</tag>
+        </tags>
+    </game>
+    <game id="5">
+        <name>Half-Life 2</name>
+        <developer>Valve</developer>
+        <publisher>Valve</publisher>
+        <releaseDate>16 Nov, 2004</releaseDate>
+        <tags>
+            <tag>FPS</tag>
+            <tag>Action</tag>
+            <tag>Sci-fi</tag>
+            <tag>Classic</tag>
+            <tag>Singleplayer</tag>
+        </tags>
+    </game>
+    <game id="6">
+        <name>Apex Legends</name>
+        <developer>Respawn Entertainment</developer>
+        <publisher>Electronic Arts</publisher>
+        <releaseDate>5 Nov, 2020</releaseDate>
+        <tags>
+            <tag>Free to Play</tag>
+            <tag>Battle Royale</tag>
+            <tag>Multiplayer</tag>
+            <tag>Shooter</tag>
+        </tags>
+    </game>
+    <game id="7">
+        <name>The Witcher 3: Wild Hunt</name>
+        <developer>CD PROJEKT RED</developer>
+        <publisher>CD PROJEKT RED</publisher>
+        <releaseDate>18 May, 2015</releaseDate>
+        <tags>
+            <tag>Open World</tag>
+            <tag>RPG</tag>
+            <tag>Story Rich</tag>
+            <tag>Atmospheric</tag>
+        </tags>
+    </game>
+</library>

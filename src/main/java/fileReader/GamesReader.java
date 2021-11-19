@@ -16,10 +16,7 @@ import java.util.ArrayList;
 
 public class GamesReader implements Reader {
 
-    public GamesReader() {
-    }
-
-    public Object read(String fileName) throws IOException, SAXException, ParserConfigurationException {
+    public @NotNull Object read(@NotNull String fileName) throws IOException, SAXException, ParserConfigurationException {
         DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         Document document = documentBuilder.parse(fileName);
         return getGames(document);
@@ -54,7 +51,7 @@ public class GamesReader implements Reader {
         return game;
     }
 
-    private void switchProperty(@NotNull Node gameProperty, Game game) {
+    private void switchProperty(@NotNull Node gameProperty, @NotNull Game game) {
         switch (gameProperty.getNodeName()) {
             case "name" -> game.setName(gameProperty.getTextContent());
             case "developer" -> game.setDeveloper(gameProperty.getTextContent());
@@ -65,7 +62,7 @@ public class GamesReader implements Reader {
         }
     }
 
-    private void setTagsToGame(@NotNull Node gameProperty, Game game) {
+    private void setTagsToGame(@NotNull Node gameProperty, @NotNull Game game) {
         ArrayList<String> tags = new ArrayList<>();
         NodeList tagsNode = gameProperty.getChildNodes();
         for (int i = 0; i < tagsNode.getLength(); i++) {

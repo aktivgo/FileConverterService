@@ -15,10 +15,11 @@ import java.util.ArrayList;
 public class XmlToJson implements FileConverter {
 
     @Override
-    public void convert(String xmlFileName, String jsonFileName) throws IOException, ParserConfigurationException, SAXException {
+    public void convert(@NotNull String xmlFileName, @NotNull String jsonFileName) throws IOException, ParserConfigurationException, SAXException {
         if (!FileExtension.getExtension(jsonFileName).equals("json")) {
             throw new IllegalArgumentException("Неверное расширение файла");
         }
+
         GamesReader reader = new GamesReader();
         ArrayList<Game> games = (ArrayList<Game>) reader.read("data/input/" + xmlFileName);
         ArrayList<Developer> developers = convertGamesToDevelopers(games);
@@ -48,7 +49,7 @@ public class XmlToJson implements FileConverter {
         return developers;
     }
 
-    private boolean contains(@NotNull ArrayList<Developer> developers, String developerName) {
+    private boolean contains(@NotNull ArrayList<Developer> developers, @NotNull String developerName) {
         for (Developer developer : developers) {
             if (developer.getName().equals(developerName)) {
                 return true;

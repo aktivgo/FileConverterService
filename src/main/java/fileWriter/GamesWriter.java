@@ -11,8 +11,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class GamesWriter implements Writer {
+
     @Override
-    public void write(Object object, String filePath) throws IOException, XMLStreamException {
+    public void write(@NotNull Object object, @NotNull String filePath) throws IOException, XMLStreamException {
         ArrayList<Game> games = (ArrayList<Game>) object;
 
         XMLOutputFactory output = XMLOutputFactory.newInstance();

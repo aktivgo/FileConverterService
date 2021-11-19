@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class DevelopersReader implements Reader {
 
     @Override
-    public Object read(String fileName) throws IOException, ParseException {
+    public @NotNull Object read(@NotNull String fileName) throws IOException, ParseException {
         JSONParser parser = new JSONParser();
         FileReader reader = new FileReader(fileName);
         JSONObject document = (JSONObject) parser.parse(reader);
@@ -37,7 +37,7 @@ public class DevelopersReader implements Reader {
         return developers;
     }
 
-    private Developer getDeveloper(JSONObject developerProperties) {
+    private @NotNull Developer getDeveloper(@NotNull JSONObject developerProperties) {
         Developer developer = new Developer();
 
         developer.setName(developerProperties.get("name").toString());
@@ -49,14 +49,14 @@ public class DevelopersReader implements Reader {
     }
 
 
-    private void fillDevelopersInGames(Developer developer) {
+    private void fillDevelopersInGames(@NotNull Developer developer) {
         ArrayList<Game> games = developer.getGames();
         for (Game game : games) {
             game.setDeveloper(developer.getName());
         }
     }
 
-    private ArrayList<Game> getGames(JSONArray gamesJson) {
+    private @NotNull ArrayList<Game> getGames(@NotNull JSONArray gamesJson) {
         ArrayList<Game> games = new ArrayList<>();
 
         for (Object gameJson : gamesJson) {
@@ -67,7 +67,7 @@ public class DevelopersReader implements Reader {
         return games;
     }
 
-    private Game getGame(JSONObject gameData) {
+    private @NotNull Game getGame(@NotNull JSONObject gameData) {
         Game game = new Game();
         game.setName(gameData.get("name").toString());
         game.setPublisher(gameData.get("publisher").toString());
@@ -77,7 +77,7 @@ public class DevelopersReader implements Reader {
         return game;
     }
 
-    private void setTagsToGame(@NotNull JSONArray tagsJson, Game game) {
+    private void setTagsToGame(@NotNull JSONArray tagsJson, @NotNull Game game) {
         ArrayList<String> tags = new ArrayList<>();
         for (Object tag : tagsJson) {
             tags.add(tag.toString());

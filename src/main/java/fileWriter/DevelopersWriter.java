@@ -14,8 +14,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class DevelopersWriter implements Writer {
+
     @Override
-    public void write(Object object, String filePath) throws IOException {
+    public void write(@NotNull Object object, @NotNull String filePath) throws IOException {
         ArrayList<Developer> developers = (ArrayList<Developer>) object;
 
         JsonObject developersObject = getDevelopersObject(developers);
@@ -48,7 +49,7 @@ public class DevelopersWriter implements Writer {
         return developersObject;
     }
 
-    private @NotNull JsonArray getGamesJson(@NotNull Developer developer){
+    private @NotNull JsonArray getGamesJson(@NotNull Developer developer) {
         JsonArray jsonGames = new JsonArray();
 
         for (Game game : developer.getGames()) {
